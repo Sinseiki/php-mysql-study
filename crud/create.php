@@ -18,5 +18,5 @@
     </select><br />
 
     <textarea name="contents" placeholder="contents" rows="8" cols="50"></textarea>
-    <input type="submit" />
+    <input type="submit" value="Write"/>
 </form>

@@ -88,8 +88,8 @@
     ?>
     <form action="createaction.php" method="post">
       <input type="text" placeholder="Name" name="name" /><br />
-      <textarea name="profile" cols="21" placeholder="Profile"></textarea>
-      <input type="submit" />
+      <textarea name="profile" cols="21" placeholder="Profile"></textarea><br />
+      <input type="submit" value="Sign Up Author" />
     </form>
     <?php
   }

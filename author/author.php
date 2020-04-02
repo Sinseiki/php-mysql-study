@@ -30,7 +30,7 @@
             ?>
         </tbody>
     </table>
-    <h3>Author Sign Up</h3>
+    <h3>List Edit</h3>
     <?php
         authorForm();
     ?>
