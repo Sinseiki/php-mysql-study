@@ -71,13 +71,15 @@
         <td><?= $hsc[1] ?></td>
         <td><?= $hsc[2] ?></td>
         <td>
-          <form action="?id=<?=$hsc[0]?>" method="post">
-            <input type='button' name='update' value='update' />
+          <form action="?" method="post">
+            <input type='hidden' name='id' value="<?=$hsc[0]?>" />
+            <input type='submit' value='update' />
           </form>
         </td>
         <td>
-          <form action="?id=<?=$hsc[0]?>" method="post">
-            <input type='button' name='delete' value='delete' />
+          <form action="deleteaction.php" method="post" onsubmit="return confirm('really delete?')">
+            <input type='hidden' name='id' value="<?=$hsc[0]?>" />
+            <input type='submit' value='delete' />
           </form>  
         </td>
     <tr>
@@ -85,6 +87,7 @@
     }
   }
   function authorForm(){
+    if(!isset($_POST['id'])){
     ?>
     <form action="createaction.php" method="post">
       <input type="text" placeholder="Name" name="name" /><br />
@@ -92,5 +95,20 @@
       <input type="submit" value="Sign Up Author" />
     </form>
     <?php
-  }
+    } else {
+      global $conn;
+      $mres_id = mysqli_real_escape_string($conn,$_POST['id']);
+      $query = "select * from author where id = {$mres_id};";
+      $result = mysqli_query($conn,$query);
+      $row = mysqli_fetch_array($result);
+    ?>
+    <form action="updateaction.php" method="post">
+      <input type="hidden" name="id" value="<?= $_POST['id'] ?>" />
+      <input type="text" name="name" value="<?= $row[1] ?>"/><br />
+      <textarea name="profile" cols="21"><?= $row[2] ?></textarea><br />
+      <input type="submit" value="Update Author" />
+    </form>
+    <?php
+  };
+};
 ?>
