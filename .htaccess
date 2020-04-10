@@ -1,0 +1,9 @@
+PHP_FLAG register_globals ON
+PHP_VALUE mysql.default_charset UTF8
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteCond %{ENV:HTTPS} !=on
+RewriteRule ^.*$ https://%{SERVER_NAME}%{REQUEST_URI} [R,L]
+</IfModule>
